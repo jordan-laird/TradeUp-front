@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { AlphaVantage } from './config/api_key'
-import { HomePage } from './components/HomePage'
+// import logo from './logo.svg';
+import './App.css'
+import { HomePage } from './views/HomePage'
 
-console.log(AlphaVantage)
 
 class App extends Component {
   
