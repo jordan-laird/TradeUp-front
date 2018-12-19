@@ -5,10 +5,10 @@ import { Container, Divider } from 'semantic-ui-react'
 export class SBCompanyList extends React.Component{
     render(){
         return(
-            <Container >
+            <Container>
                 {this.props.companyList.map(companyInfo => (
-                   <Container>
-                       <h3>
+                    <Container onClick={e => console.log(companyInfo.companyName)}>
+                       <h3 >
                        {companyInfo.symbol}
                        </h3>
                        <h4>
