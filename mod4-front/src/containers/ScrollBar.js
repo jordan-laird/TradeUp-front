@@ -1,17 +1,17 @@
 import React from 'react'
-import { SBCompanyInfo } from '../components/SBCompanyInfo'
+import { SBCompanyList } from '../components/SBCompanyList'
 const url = 'https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=company'
 
 export class ScrollBar extends React.Component{
     constructor(){
         super()
         this.state = {
-            companyInfo: []
+            companyList: []
     }
 
     }
 
-    fetchCompanyInfo = () => {
+    fetchCompanyList = () => {
         fetch(url)
             .then(res => res.json())
             .then((companies) => {
@@ -24,19 +24,19 @@ export class ScrollBar extends React.Component{
                     }
                 }
                         this.setState({
-                            companyInfo: arrayOfCompanies
+                            companyList: arrayOfCompanies
                         })
             })
     }
 
     componentDidMount() {
-        this.fetchCompanyInfo()
+        this.fetchCompanyList()
     }
 
     render(){
         return(
             <div>
-                <SBCompanyInfo companyInfo={this.state.companyInfo} />
+                <SBCompanyList companyList={this.state.companyList} />
 
             </div>
         )

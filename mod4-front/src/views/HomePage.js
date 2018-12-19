@@ -4,13 +4,6 @@ import { ScrollBar } from '../containers/ScrollBar'
 
 
 export class HomePage extends React.Component{
-  
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         stocks: []
-    //     }
-    // }
     
     render() {
         return(
