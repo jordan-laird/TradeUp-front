@@ -1,5 +1,6 @@
 import React from 'react'
 import { SBCompanyList } from '../components/SBCompanyList'
+import { Grid } from 'semantic-ui-react'
 const url = 'https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=company'
 
 export class ScrollBar extends React.Component{
@@ -36,7 +37,16 @@ export class ScrollBar extends React.Component{
     render(){
         return(
             <div>
-                <SBCompanyList companyList={this.state.companyList} />
+                <Grid>
+                    <Grid.Row columns={4}>
+                        <Grid.Column textAlign="left">
+                            <SBCompanyList companyList={this.state.companyList} />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <div>TESTS</div>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
 
             </div>
         )
