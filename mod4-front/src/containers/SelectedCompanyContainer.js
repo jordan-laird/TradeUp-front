@@ -5,26 +5,6 @@ import { Chart } from 'chart.js'
 
 export class SelectedCompanyContainer extends React.Component{
     
-    // historicalChart = () => {
-    //     new Chart(ctx, {
-    //         type: 'line',
-    //         data: data,
-    //         options: {
-    //             elements: {
-    //                 line: {
-    //                     tension: 0, // disables bezier curves
-    //                 }
-    //             },
-    //             animation: {
-    //                 duration: 0, // general animation time
-    //             },
-    //             hover: {
-    //                 animationDuration: 0, // duration of animations when hovering an item
-    //             },
-    //             responsiveAnimationDuration: 0,
-    //         }
-    //     })
-    // }
     render(){
         if(!this.props.company) return <h3>NEED TO FIND PLACEHOLDER</h3>
         let previousDayStats = this.props.chart[this.props.chart.length - 1]
@@ -36,6 +16,8 @@ export class SelectedCompanyContainer extends React.Component{
                 <h1>{currentCompany.companyName}</h1>
                 <img src={currentCompanyLogo} />
 
+        
+                
                 <p>Description: {currentCompany.description}</p>
                 <p>Industry: {currentCompany.industry}</p>
                 <p>CEO: {currentCompany.CEO}</p>
