@@ -39,13 +39,7 @@ export class HomePage extends React.Component{
     fetchExtendedInfo = (companySymbol) => {
         fetch(`https://api.iextrading.com/1.0//stock/market/batch?symbols=${companySymbol}&types=company,logo,chart&range=ytd`)
             .then(res => res.json())
-            .then((companyData) =>  {this.setState({selectedCompany: companyData})} )
-        //     let companyExtendedInfo = []
-        //     for (const data in companyData){
-        //         companyExtendedInfo.push(data)
-        //         console.log(companyExtendedInfo)
-        //     }
-        // })
+            .then((companyData) =>  {this.setState({selectedCompany: companyData[companySymbol]})} )
     }
 
     componentDidMount() {
@@ -62,12 +56,12 @@ export class HomePage extends React.Component{
         return(
             <div>
                 <Grid>
-                    <Grid.Row columns={4}>
+                    <Grid.Row columns={2}>
                         <Grid.Column>
                             <ScrollBar companyList={this.state.companyList} handleClick={this.handleClick} />
                         </Grid.Column>
                         <Grid.Column>
-                            <SelectedCompanyContainer selectedCompany={this.state.selectedCompany} />
+                            <SelectedCompanyContainer {...this.state.selectedCompany} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
