@@ -7,7 +7,7 @@ export class SBCompanyList extends React.Component{
         return(
             <Container>
                 {this.props.companyList.map(companyInfo => (
-                    <Container onClick={e => console.log(companyInfo.companyName)}>
+                    <Container onClick={e => this.props.handleClick(companyInfo.symbol)}>
                        <h3 >
                        {companyInfo.symbol}
                        </h3>

@@ -12,7 +12,8 @@ export class SBCurrentPrices extends React.Component{
     fetchCurrentPrice = () => {
         fetch(`https://api.iextrading.com/1.0/stock/${this.props.companySymbol}/chart/1d`)
         .then(res => res.json())
-        .then(prices => this.setState({currentPrice: prices[prices.length - 1]}))
+        .then(prices => 
+            this.setState({currentPrice: prices[prices.length - 1]}))
     }
 
     componentDidMount(){
@@ -24,7 +25,7 @@ export class SBCurrentPrices extends React.Component{
         return(
             <div>
             <p>
-            {this.state.currentPrice["marketClose"]}
+            {this.state.currentPrice["close"]}
             </p>
             </div>
 
