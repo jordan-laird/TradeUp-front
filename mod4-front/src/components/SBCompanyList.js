@@ -1,6 +1,6 @@
 import React from 'react'
 import { SBCurrentPrices } from './SBCurrentPrices'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container, Divider } from 
 
 export class SBCompanyList extends React.Component{
     render(){
