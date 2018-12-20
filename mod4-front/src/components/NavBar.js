@@ -8,12 +8,12 @@ class _NavBar extends React.Component {
       <div>
         <Menu fixed="top" inverted>
           <Container>
-            <Menu.Item as="a" header>
-              <Image
+            <Menu.Item header>
+              {/* <Image
                 size="mini"
                 src="/logo.png"
                 style={{ marginRight: "1.5em" }}
-              />
+              /> */}
               Stock City
             </Menu.Item>
             {/* <Menu.Item as="a">Home </Menu.Item> */}
