@@ -37,9 +37,15 @@ export class HomePage extends React.Component{
     }
 
     fetchExtendedInfo = (companySymbol) => {
-        fetch(`https://api.iextrading.com/1.0//stock/market/batch?symbols=${companySymbol}&types=company,logo,news,chart&range=ytd`)
-            .then(res => res.json())
-            .then((companyData) =>  {this.setState({selectedCompany: companyData[companySymbol]})} )
+        Promise.all([
+            fetch(`https://api.iextrading.com/1.0//stock/market/batch?symbols=${companySymbol}&types=company,logo,news,chart&range=ytd`)
+                .then(res => res.json()),
+            fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
+                .then(res => res.json())
+        ])
+            .then( ([ companyData, prices ]) => {
+                this.setState({ selectedCompany: { ...companyData[companySymbol], currentPrice: prices[prices.length - 1] }})
+            })
     }
 
     componentDidMount() {
