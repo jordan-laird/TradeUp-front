@@ -7,6 +7,8 @@ import { User } from "./components/User";
 import { UserEdit } from "./components/UserEdit";
 import { NavBar } from "./components/NavBar";
 import { Login } from "./components/Login";
+import { Portfolio } from "./components/Portfolio";
+import { SignUp } from "./components/SignUp";
 
 class App extends Component {
   render() {
@@ -19,7 +21,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/users/:id/edit" component={UserEdit} />
             <Route path="/users" component={User} />
-            {/* <Route path="/SignUp" component={SignUp} /> */}
+            <Route path="/Portfolio" component={Portfolio} />
+            <Route path="/SignUp" component={SignUp} />
           </Switch>
         </div>
       </BrowserRouter>

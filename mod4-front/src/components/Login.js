@@ -3,24 +3,35 @@ import React from "react";
 export class Login extends React.Component {
   render() {
     return (
-      <form onSubmit={this.login}>
-        <h1>Login</h1>
-        <div className="form-group">
-          <label>Email</label>
-          <input name="emailInput" className="form-control" type="text" />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            name="passwordInput"
-            className="form-control"
-            type="password"
-          />
-        </div>
-        <button className="btn btn-primary">Login</button>
-      </form>
+      <div>
+        <form onSubmit={this.login}>
+          <h1>Login</h1>
+          <div className="form-group">
+            <label>Email</label>
+            <input name="emailInput" className="form-control" type="text" />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              name="passwordInput"
+              className="form-control"
+              type="password"
+            />
+          </div>
+          <button className="btn btn-primary">Login</button>
+        </form>
+        <button
+          onClick={() => this.goTo(`/SignUp`)}
+          className="btn btn-primary"
+        >
+          SignUp
+        </button>
+      </div>
     );
   }
+  goTo = url => {
+    this.props.history.push(url);
+  };
 
   login = e => {
     e.preventDefault();
@@ -36,6 +47,7 @@ export class Login extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
+        console.log(result);
         localStorage.setItem("token", result.token);
       });
   };
