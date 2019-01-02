@@ -11,6 +11,13 @@ import { Portfolio } from "./components/Portfolio";
 import { SignUp } from "./components/SignUp";
 
 class App extends Component {
+  fetchCurrentPrice = (companySymbol) => {
+    fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
+      .then(res => res.json())
+      .then(prices => prices.length ?
+        this.setState({ currentPrice: prices[prices.length - 1] }) : null)
+  }
+
   render() {
     return (
       <BrowserRouter>

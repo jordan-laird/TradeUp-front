@@ -11,13 +11,17 @@ export class PurchaseShareForm extends React.Component{
             body: JSON.stringify({
                 purchased_price: e.target.pricePerShare.value,
                 stock: e.target.companyName.value,
+                stock_symbol: e.target.companySymbol.value,
                 status: true,
                 user_id: 1
+
                 // TODO NEED TO CHANGE TO LOGGED IN USER
             }) 
 
         })
     }
+
+    
 
     handlePurchaseShareClick = () => {
         console.log('Purchase Confirmed')
@@ -28,6 +32,7 @@ export class PurchaseShareForm extends React.Component{
         return(
             <div>
                 <Form onSubmit={e => this.addTransaction(e)}>
+                    <Form.Input fluid label="Company" name="companySymbol"value={this.props.company['symbol']} readOnly />
                     <Form.Input fluid label="Company" name="companyName"value={this.props.company['companyName']} readOnly />
                     <Form.Input fluid label="Price Per Share" name="pricePerShare" value={this.props.currentPrice.close ? this.props.currentPrice.close : this.props.chart[this.props.chart.length - 1].close } readOnly />
 
