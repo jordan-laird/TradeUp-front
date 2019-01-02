@@ -1,38 +1,7 @@
 import React from "react";
+import { Button, Form, Segment } from "semantic-ui-react";
 
 export class Login extends React.Component {
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
-          <div className="form-group">
-            <label>Email</label>
-            <input name="emailInput" className="form-control" type="text" />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              name="passwordInput"
-              className="form-control"
-              type="password"
-            />
-          </div>
-          <button className="btn btn-primary">Login</button>
-        </form>
-        <button
-          onClick={() => this.goTo(`/SignUp`)}
-          className="btn btn-primary"
-        >
-          SignUp
-        </button>
-      </div>
-    );
-  }
-  goTo = url => {
-    this.props.history.push(url);
-  };
-
   login = e => {
     e.preventDefault();
     fetch("http://localhost:3000/api/v1/auth/", {
@@ -49,6 +18,45 @@ export class Login extends React.Component {
       .then(result => {
         console.log(result);
         localStorage.setItem("token", result.token);
+        this.goTo("/companies");
       });
   };
+  goTo = url => {
+    this.props.history.push(url);
+  };
+
+  render() {
+    return (
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <Segment inverted>
+          <Form onSubmit={e => this.login(e)} inverted>
+            <h1>Login</h1>
+            <Form.Group widths="equal">
+              <Form.Input
+                fluid
+                label="Email"
+                name="emailInput"
+                placeholder="Email"
+              />
+              <Form.Input
+                fluid
+                label="Password"
+                type="password"
+                name="passwordInput"
+              />
+            </Form.Group>
+            <Button type="submit">Login</Button>
+            <Button onClick={() => this.goTo(`/SignUp`)} type="button">
+              SignUp
+            </Button>
+          </Form>
+        </Segment>
+      </div>
+    );
+  }
 }
