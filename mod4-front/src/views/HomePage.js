@@ -18,6 +18,8 @@ export class HomePage extends React.Component{
 
     }
 
+    
+
     fetchCompanyList = () => {
         fetch(url)
             .then(res => res.json())

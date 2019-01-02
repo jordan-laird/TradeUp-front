@@ -25,7 +25,7 @@ export class SBCurrentPrices extends React.Component{
         return(
             <div>
             <p>
-            {this.state.currentPrice["close"]}
+           {this.state.currentPrice["close"]}
             </p>
             </div>
 
