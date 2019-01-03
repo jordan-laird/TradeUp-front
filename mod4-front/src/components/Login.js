@@ -16,9 +16,10 @@ export class Login extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
+        this.props.setCurrentUser(result.user);
+        localStorage.setItem("userID", result.user.id);
         localStorage.setItem("token", result.token);
         this.goTo("/companies");
-        ;
       });
   };
   goTo = url => {

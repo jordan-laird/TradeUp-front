@@ -13,21 +13,44 @@ import { PrivateRoute } from "./components/PrivateRoute";
 // import { Logout } from "./components/Logout";
 
 class App extends Component {
-  fetchCurrentPrice = (companySymbol) => {
+  state = {
+    currentUser: null
+  };
+
+  componentDidMount() {
+    let userID = localStorage.getItem("userID");
+    if (userID) {
+      // Fetch user
+    }
+  }
+
+  fetchCurrentPrice = companySymbol => {
     fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
       .then(res => res.json())
-      .then(prices => prices.length ?
-        this.setState({ currentPrice: prices[prices.length - 1] }) : null)
-  }
+      .then(prices =>
+        prices.length
+          ? this.setState({ currentPrice: prices[prices.length - 1] })
+          : null
+      );
+  };
+
+  setCurrentUser = currentUser => {
+    this.setState({ currentUser });
+  };
 
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <NavBar />
+          <NavBar currentUser={this.state.currentUser} />
           <Switch>
             <PrivateRoute path="/companies" component={HomePage} />
-            <Route path="/login" component={Login} />
+            <Route
+              path="/login"
+              render={props => (
+                <Login {...props} setCurrentUser={this.setCurrentUser} />
+              )}
+            />
             {/* <Route path="/logout" component={Logout} /> */}
             <PrivateRoute path="/users/:id/edit" component={UserEdit} />
             <PrivateRoute path="/users" component={User} />
