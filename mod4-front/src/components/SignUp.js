@@ -20,15 +20,20 @@ export class SignUp extends Component {
         }
       })
     }).then(() => {
-      alert("Your account has been created! Please log in to continue.");
-      this.props.history.push("/home");
+      alert("Your account has been created!");
+      this.props.history.push("/companies");
     });
   };
   render() {
     return (
       <div>
+        <br />
+        <br />
+        <br />
+        <br />
         <Segment onSubmit={e => this.signUpClickHandler(e)} inverted>
           <Form inverted>
+            <h1>Sign Up</h1>
             <Form.Group widths="equal">
               <Form.Input
                 fluid
@@ -51,12 +56,15 @@ export class SignUp extends Component {
               <Form.Input
                 fluid
                 label="Password"
-                name="passwordInput"
+                type="password"
                 placeholder="Password"
               />
             </Form.Group>
             <Form.Checkbox label="I agree to the Terms and Conditions" />
             <Button type="submit">Submit</Button>
+            <Message>
+              Already have an account? <Link to="/login">Log In</Link>
+            </Message>
           </Form>
         </Segment>
       </div>
