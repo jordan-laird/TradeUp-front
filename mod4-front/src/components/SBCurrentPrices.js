@@ -18,7 +18,7 @@ export class SBCurrentPrices extends React.Component{
 
     componentDidMount(){
         this.fetchCurrentPrice()
-        setInterval(this.fetchCurrentPrice, 30000);
+        setInterval(this.fetchCurrentPrice, 300000);
     }
 
     render(){
