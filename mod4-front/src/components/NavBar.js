@@ -82,8 +82,7 @@ class _NavBar extends React.Component {
   logoutUser = () => {
     console.log("bye");
     localStorage.clear();
-    {
-    }
+    this.goTo("/login");
     // localStorage.removeItem("token");
     // localStorage.removeItem("user");
     // this.props.setCurrentUser(null);
