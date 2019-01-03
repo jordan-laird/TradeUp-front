@@ -14,6 +14,40 @@ import { PrivateRoute } from "./components/PrivateRoute";
 
 class App extends Component {
   state = {
+
+    currentUser: null
+  };
+
+  componentDidMount() {
+    let userID = localStorage.getItem("userID");
+    if (userID) {
+      // Fetch user
+      fetch(`http://localhost:3001/api/v1/users/${userID}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+        .then(res => res.json())
+        .then(currentUser => {
+          this.setState({ currentUser });
+        });
+    }
+  }
+
+  setCurrentUser = currentUser => {
+    this.setState({ currentUser });
+  };
+
+  fetchCurrentPrice = companySymbol => {
+    fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
+      .then(res => res.json())
+      .then(prices =>
+        prices.length
+          ? this.setState({ currentPrice: prices[prices.length - 1] })
+          : null
+      );
+  };
+
     currentPrices: []
   }
   fetchCurrentPrice = (companySymbol) => {
@@ -39,8 +73,16 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <NavBar />
+          <NavBar currentUser={this.state.currentUser} />
           <Switch>
+            <PrivateRoute path="/companies" component={HomePage} />
+            <Route
+              path="/login"
+              render={props => (
+                <Login {...props} setCurrentUser={this.setCurrentUser} />
+              )}
+            />
+            {/* <Route path="/logout" component={Logout} /> */}
           <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/users/:id/edit" component={UserEdit} />
