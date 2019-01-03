@@ -1,32 +1,53 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { AlphaVantage } from './config/api_key'
-import { HomePage } from './components/HomePage'
-
-console.log(AlphaVantage)
+import React, { Component } from "react";
+// import logo from './logo.svg';
+import "./App.css";
+import { HomePage } from "./views/HomePage";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { User } from "./unused_components/User";
+import { UserEdit } from "./unused_components/UserEdit";
+import { NavBar } from "./components/NavBar";
+import { Login } from "./components/Login";
+import { Portfolio } from "./components/Portfolio";
+import { SignUp } from "./components/SignUp";
+import { PrivateRoute } from "./components/PrivateRoute";
+// import { Logout } from "./components/Logout";
 
 class App extends Component {
-  
+  state = {
+    currentPrices: []
+  }
+  fetchCurrentPrice = (companySymbol) => {
+    fetch('https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=chart&range=1d')
+      .then(res => res.json())
+      .then(prices => {
+        for( let symbol in prices){
+          let chart = prices[symbol].chart
+          prices[symbol] = chart[chart.length-1]
+        }
+        console.log(prices)
+        this.setState({currentPrices: prices})
+      })
+  }
+
+  componentDidMount(){
+    this.fetchCurrentPrice()
+    setInterval(this.fetchCurrentPrice, 30000)
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <HomePage />
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
+          <Switch>
+          <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/users/:id/edit" component={UserEdit} />
+            <PrivateRoute path="/users" component={User} />
+            <PrivateRoute path="/Portfolio" render={(props) => <Portfolio {...props} currentPrices={this.state.currentPrices} /> } />
+            <Route path="/SignUp" component={SignUp} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /src/config
+/src/unused_components
 
 # testing
 /coverage
