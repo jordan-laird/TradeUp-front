@@ -15,7 +15,7 @@ export class User extends React.Component {
   }
 
   render() {
-    let { user, showUserEditForm } = this.state;
+    let { user } = this.state;
     return <User user={this.user} />;
   }
   user = user => {
@@ -32,7 +32,7 @@ export class User extends React.Component {
       method: "DELETE"
     });
     this.setState(state => {
-      state.users = state.users.filter(user => user.id != this.state.user.id);
+      state.user = state.user.filter(user => user.id != this.state.user.id);
       return state;
     });
   };
@@ -44,7 +44,7 @@ export class User extends React.Component {
       body: JSON.stringify(values)
     });
     this.setState(state => {
-      let user = state.users.find(user => user.id == this.state.user.id);
+      let user = state.user.find(user => user.id == this.state.user.id);
       user.first_name = values.first_name;
       user.last_name = values.Last_name;
       user.email = values.email;

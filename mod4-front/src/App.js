@@ -9,6 +9,8 @@ import { NavBar } from "./components/NavBar";
 import { Login } from "./components/Login";
 import { Portfolio } from "./components/Portfolio";
 import { SignUp } from "./components/SignUp";
+import { PrivateRoute } from "./components/PrivateRoute";
+// import { Logout } from "./components/Logout";
 
 class App extends Component {
   render() {
@@ -17,11 +19,12 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/companies" component={HomePage} />
+            <PrivateRoute path="/companies" component={HomePage} />
             <Route path="/login" component={Login} />
-            <Route path="/users/:id/edit" component={UserEdit} />
-            <Route path="/users" component={User} />
-            <Route path="/Portfolio" component={Portfolio} />
+            {/* <Route path="/logout" component={Logout} /> */}
+            <PrivateRoute path="/users/:id/edit" component={UserEdit} />
+            <PrivateRoute path="/users" component={User} />
+            <PrivateRoute path="/Portfolio" component={Portfolio} />
             <Route path="/SignUp" component={SignUp} />
           </Switch>
         </div>
