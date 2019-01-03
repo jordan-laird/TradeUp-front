@@ -57,11 +57,10 @@ export class Portfolio extends Component {
   render() {
     return (
       <div>
-        <br />
-        <br />
-        <h1>Current Portfolio</h1>
+        
+        <h1 style={{ textAlign: 'center',marginTop: '60px', marginBottom: '20px'} }>Current Portfolio</h1>
         <ActivePortfolioTable myTransactionList={this.state.myTransactionList} sellShare={this.sellShare} currentPrices={this.props.currentPrices}/>
-        <h1>Previously Owned</h1>
+        <h1 style={{textAlign: 'center',marginTop: '20px', marginBottom: '20px'} }>Previously Owned</h1>
         <InactivePortfolioTable myTransactionList={this.state.myTransactionList}/>
       </div>
     )

@@ -7,9 +7,7 @@ export class ScrollBar extends React.Component{
 
     render(){
         return(
-            <div style={{height:`${window.innerHeight}px`, overflowY:'scroll'}}>
-            <br />
-            <br />
+            <div style={{ height: `${window.innerHeight}px`, overflowY: 'scroll', marginLeft: '20px', marginTop: '60px'} }>
                 <SBCompanyList companyList={this.props.companyList} handleClick={this.props.handleClick} currentPrices={this.props.currentPrices}/>
             </div>
         )

@@ -39,10 +39,10 @@ export class PurchaseShareForm extends React.Component{
                     <Form.Input fluid label="Company" name="companyName"value={this.props.company['companyName']} readOnly />
                     <Form.Input fluid label="Price Per Share" name="pricePerShare" value={this.props.currentPrice.close ? this.props.currentPrice.close : this.props.chart[this.props.chart.length - 1].close } readOnly />
 
-                    <Form.Field>
+                    {/* <Form.Field>
                          <label>Quantity</label>
                          <input placeholder='Quantity' name="quantity" />
-                    </Form.Field>
+                    </Form.Field> */}
 
                     <Button onClick={e => this.handlePurchaseShareClick()} type="submit">Confirm Purchase</Button>
                 </Form>

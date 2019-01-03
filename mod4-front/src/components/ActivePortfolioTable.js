@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button, Form } from 'semantic-ui-react'
 import { ActivePortfolioTableHeader } from './ActivePortfolioTableHeader'
-import { SBCurrentPrices } from './SBCurrentPrices'
+import { SBCurrentPrices } from '../unused_components/SBCurrentPrices'
 
 export class ActivePortfolioTable extends React.Component{
    

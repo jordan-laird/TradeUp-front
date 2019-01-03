@@ -8,6 +8,7 @@ import {
   Image,
   Header
 } from "semantic-ui-react";
+import { PricesGraph } from '../components/PricesGraph'
 import { Chart } from "chart.js";
 import { PurchaseShareForm } from "../components/PurchaseShareForm";
 
@@ -23,10 +24,12 @@ export class SelectedCompanyContainer extends React.Component {
       <Container
         style={{ height: `${window.innerHeight}px`, overflowY: "scroll" }}
       >
+        <br />
+        <br />
         <h1>{currentCompany.companyName}</h1>
         <img src={currentCompanyLogo} alt="" />
 
-        <p>Description: {currentCompany.description}</p>
+        <p>{currentCompany.description}</p>
         <p>Industry: {currentCompany.industry}</p>
         <p>CEO: {currentCompany.CEO}</p>
 

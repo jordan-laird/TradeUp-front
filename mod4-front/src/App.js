@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { HomePage } from "./views/HomePage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { User } from "./components/User";
-import { UserEdit } from "./components/UserEdit";
+import { User } from "./unused_components/User";
+import { UserEdit } from "./unused_components/UserEdit";
 import { NavBar } from "./components/NavBar";
 import { Login } from "./components/Login";
 import { Portfolio } from "./components/Portfolio";
@@ -27,8 +27,6 @@ class App extends Component {
         console.log(prices)
         this.setState({currentPrices: prices})
       })
-      // .then(prices => prices.length ?
-      //   this.setState({ currentPrice: prices[prices.length - 1] }) : null)
   }
 
   componentDidMount(){
