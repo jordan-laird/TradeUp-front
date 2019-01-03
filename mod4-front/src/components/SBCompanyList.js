@@ -14,7 +14,7 @@ export class SBCompanyList extends React.Component{
                        <h4>
                        {companyInfo.companyName}
                        </h4>
-                       <SBCurrentPrices companySymbol={companyInfo.symbol} key={companyInfo.symbol} />
+                        {this.props.currentPrices[companyInfo.symbol] ? this.props.currentPrices[companyInfo.symbol].close : null }
                        <Divider />
                    </Container>
 

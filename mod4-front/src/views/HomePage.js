@@ -66,7 +66,7 @@ export class HomePage extends React.Component{
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column>
-                            <ScrollBar companyList={this.state.companyList} handleClick={this.handleClick} />
+                            <ScrollBar companyList={this.state.companyList} handleClick={this.handleClick} currentPrices={this.props.currentPrices} />
                         </Grid.Column>
                         <Grid.Column>
                             <SelectedCompanyContainer {...this.state.selectedCompany} />

@@ -10,7 +10,7 @@ export class ScrollBar extends React.Component{
             <div style={{height:`${window.innerHeight}px`, overflowY:'scroll'}}>
             <br />
             <br />
-                <SBCompanyList companyList={this.props.companyList} handleClick={this.props.handleClick}/>
+                <SBCompanyList companyList={this.props.companyList} handleClick={this.props.handleClick} currentPrices={this.props.currentPrices}/>
             </div>
         )
     }

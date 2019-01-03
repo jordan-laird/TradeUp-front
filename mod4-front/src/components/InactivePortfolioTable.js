@@ -13,8 +13,8 @@ export class InactivePortfolioTable extends React.Component{
                     <Table.Row>
                         <Table.Cell>{transactionInfo.stock}</Table.Cell>
                         <Table.Cell>{transactionInfo.purchased_price}</Table.Cell>
-                        {/* <Table.Cell><SBCurrentPrices companySymbol={transactionInfo.stock_symbol} key={transactionInfo.stock_symbol} /></Table.Cell> */}
-                        {/* <Table.Cell>{transactionInfo.purchased_price - }</Table.Cell> */}
+                        <Table.Cell>{transactionInfo.sold_price}</Table.Cell>
+                        <Table.Cell>{transactionInfo.sold_price - transactionInfo.purchased_price}</Table.Cell>
                     </Table.Row>
                 ))}
             </Table>
