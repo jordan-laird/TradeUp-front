@@ -1,5 +1,8 @@
 import React from 'react'
 import { Form, Button } from 'semantic-ui-react'
+
+let userID = localStorage.getItem("userID")
+
 export class PurchaseShareForm extends React.Component{
     addTransaction = (e) => {
         fetch('http://localhost:3001/api/v1/transactions', {
@@ -13,7 +16,7 @@ export class PurchaseShareForm extends React.Component{
                 stock: e.target.companyName.value,
                 stock_symbol: e.target.companySymbol.value,
                 status: true,
-                user_id: 1
+                user_id: userID
 
                 // TODO NEED TO CHANGE TO LOGGED IN USER
             }) 
