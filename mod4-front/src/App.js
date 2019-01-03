@@ -21,8 +21,21 @@ class App extends Component {
     let userID = localStorage.getItem("userID");
     if (userID) {
       // Fetch user
+      fetch(`http://localhost:3001/api/v1/users/${userID}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+        .then(res => res.json())
+        .then(currentUser => {
+          this.setState({ currentUser });
+        });
     }
   }
+
+  setCurrentUser = currentUser => {
+    this.setState({ currentUser });
+  };
 
   fetchCurrentPrice = companySymbol => {
     fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
@@ -32,10 +45,6 @@ class App extends Component {
           ? this.setState({ currentPrice: prices[prices.length - 1] })
           : null
       );
-  };
-
-  setCurrentUser = currentUser => {
-    this.setState({ currentUser });
   };
 
   render() {

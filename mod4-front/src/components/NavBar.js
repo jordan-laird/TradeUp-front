@@ -1,45 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Container, Menu } from "semantic-ui-react";
+import { Container, Menu, Icon } from "semantic-ui-react";
 
 class _NavBar extends React.Component {
-  userAuthenticated = () => {
-    if (
-      !this.props.currentUser ||
-      this.props.currentUser.error === "Please log in"
-    ) {
-      return (
-        <Menu>
-          <Container>
-            <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
-              {" "}
-              Login{" "}
-            </Menu.Item>{" "}
-            <Menu.Item as="a" onClick={() => this.goTo(`/SignUp`)}>
-              {" "}
-              SignUp{" "}
-            </Menu.Item>{" "}
-          </Container>
-        </Menu>
-      );
-    } else {
-      return (
-        <Menu>
-          <Container>
-            <Menu.Item as="a" onClick={() => this.goTo(`/logout`)}>
-              {" "}
-              Logout{" "}
-            </Menu.Item>{" "}
-            <Menu.Item name={this.props.currentUser.firstName}>
-              {" "}
-              SignUp{" "}
-            </Menu.Item>{" "}
-          </Container>
-        </Menu>
-      );
-    }
-  };
-
   render() {
     return (
       <div>
@@ -51,7 +14,7 @@ class _NavBar extends React.Component {
                 src="/logo.png"
                 style={{ marginRight: "1.5em" }}
               /> */}
-              Stock City
+              <Icon name="chart line " size="big" /> Stock City
             </Menu.Item>
             {/* <Menu.Item as="a">Home </Menu.Item> */}
             <Menu.Item as="a" onClick={() => this.goTo(`/companies`)}>
