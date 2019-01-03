@@ -4,7 +4,7 @@ import { Button, Form, Segment } from "semantic-ui-react";
 export class Login extends React.Component {
   login = e => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/auth/", {
+    fetch("http://localhost:3001/api/v1/auth/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -16,9 +16,9 @@ export class Login extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
         localStorage.setItem("token", result.token);
         this.goTo("/companies");
+        ;
       });
   };
   goTo = url => {
