@@ -4,6 +4,7 @@ import { ActivePortfolioTable } from './ActivePortfolioTable'
 import { InactivePortfolioTable } from './InactivePortfolioTable'
 
 const url = 'https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=chart&range=1d'
+const userID = localStorage.getItem("userID")
 
 export class Portfolio extends Component {
   constructor(){
@@ -18,7 +19,7 @@ export class Portfolio extends Component {
     fetch('http://localhost:3001/api/v1/transactions')
     .then(res => res.json())
     .then((transactions) => {
-      myTransactions = transactions.filter(transaction => transaction.user_id === 1)
+      myTransactions = transactions.filter(transaction => transaction.user_id = userID)
       this.setState({ myTransactionList: myTransactions })
      
       //TODO SWITCH TO CURRENT USER
@@ -37,9 +38,10 @@ export class Portfolio extends Component {
       },
       body: JSON.stringify({
         status: false,
+        sold_price: this.props.currentPrices[transactionInfo.stock_symbol] ? this.props.currentPrices[transactionInfo.stock_symbol].close : 0
         // TODO SOLD PRICE
 
-        // TODO NEED TO CHANGE TO LOGGED IN USER
+        
       })
 
     })
@@ -49,6 +51,7 @@ export class Portfolio extends Component {
   
 
   componentDidMount(){
+    console.log(userID)
     this.fetchTransactions()
   }
   render() {
@@ -57,7 +60,7 @@ export class Portfolio extends Component {
         <br />
         <br />
         <h1>Current Portfolio</h1>
-        <ActivePortfolioTable myTransactionList={this.state.myTransactionList} sellShare={this.sellShare}/>
+        <ActivePortfolioTable myTransactionList={this.state.myTransactionList} sellShare={this.sellShare} currentPrices={this.props.currentPrices}/>
         <h1>Previously Owned</h1>
         <InactivePortfolioTable myTransactionList={this.state.myTransactionList}/>
       </div>
