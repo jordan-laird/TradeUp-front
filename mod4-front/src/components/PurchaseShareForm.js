@@ -17,18 +17,11 @@ export class PurchaseShareForm extends React.Component{
                 stock_symbol: e.target.companySymbol.value,
                 status: true,
                 user_id: userID
-
-                // TODO NEED TO CHANGE TO LOGGED IN USER
             }) 
 
-        })
+        }).then(this.props.history.push('/portfolio'))
     }
 
-    
-
-    handlePurchaseShareClick = () => {
-        this.props.history.push('/portfolio')
-    }
     render(){
         console.log('purchase', this.props.history)
 
@@ -44,7 +37,7 @@ export class PurchaseShareForm extends React.Component{
                          <input placeholder='Quantity' name="quantity" />
                     </Form.Field> */}
 
-                    <Button onClick={e => this.handlePurchaseShareClick()} type="submit">Confirm Purchase</Button>
+                    <Button onClick={console.log("purchased")} type="submit">Confirm Purchase</Button>
                 </Form>
             </div>
         )

@@ -54,21 +54,22 @@ class _NavBar extends React.Component {
               <Icon name="chart line " size="big" /> Stock City
             </Menu.Item>
             {/* <Menu.Item as="a">Home </Menu.Item> */}
-            <Menu.Item as="a" onClick={() => this.goTo(`/companies`)}>
+            {localStorage.getItem('token') ? <Menu.Item as="a" onClick={() => this.goTo(`/companies`)}>
               Home
-            </Menu.Item>
-            <Menu.Item as="a" onClick={() => this.goTo(`/portfolio`)}>
-              Portfolio{" "}
-            </Menu.Item>
-            <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
+            </Menu.Item> : null}
+            {localStorage.getItem('token') ? <Menu.Item as="a" onClick={() => this.goTo(`/portfolio`)}>
+              Portfolio
+            </Menu.Item> : null }
+            {/* <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
               Login
-            </Menu.Item>{" "}
-            <Menu.Item as="a" onClick={() => this.goTo(`/SignUp`)}>
+            </Menu.Item>{" "} */}
+            {/* <Menu.Item as="a" onClick={() => this.goTo(`/SignUp`)}>
               SignUp
-            </Menu.Item>{" "}
+            </Menu.Item>{" "} */}
+            {localStorage.getItem('token') ?
             <Menu.Item as="a" onClick={() => this.logoutUser()}>
               Logout
-            </Menu.Item>{" "}
+            </Menu.Item> : null }
           </Container>
         </Menu>
       </div>
