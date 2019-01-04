@@ -16,7 +16,7 @@ export class SignUp extends Component {
           first_name: e.target.firstNameInput.value,
           last_name: e.target.lastNameInput.value,
           email: e.target.emailInput.value,
-          password: e.target.passwordInput.value
+          password: e.target.password.value
         }
       })
     }).then(() => {
