@@ -27,10 +27,10 @@ export class PurchaseShareForm extends React.Component{
     
 
     handlePurchaseShareClick = () => {
-        console.log('Purchase Confirmed')
+        this.props.history.push('/portfolio')
     }
     render(){
-        console.log(this.props)
+        console.log('purchase', this.props.history)
 
         return(
             <div>

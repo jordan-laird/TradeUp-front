@@ -25,6 +25,7 @@ export class SignUp extends Component {
     });
   };
   render() {
+    console.log('sign up', this.props.history)
     return (
       <div>
         <br />

@@ -30,6 +30,7 @@ export class Portfolio extends Component {
 
   sellShare = (transactionInfo) => {
     console.log(transactionInfo)
+    let sellPrice = this.props.currentPrices[transactionInfo.stock_symbol].close
     fetch(`http://localhost:3001/api/v1/transactions/${transactionInfo.id}`, {
       method: 'PATCH',
       headers: {
@@ -38,7 +39,7 @@ export class Portfolio extends Component {
       },
       body: JSON.stringify({
         status: false,
-        sold_price: this.props.currentPrices[transactionInfo.stock_symbol] ? this.props.currentPrices[transactionInfo.stock_symbol].close : 0
+        sold_price: sellPrice
         // TODO SOLD PRICE
 
         

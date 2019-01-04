@@ -2,12 +2,13 @@ import React from 'react'
 import { Container, Divider, Grid } from 'semantic-ui-react'
 import { ScrollBar } from '../containers/ScrollBar'
 import { SelectedCompanyContainer } from '../containers/SelectedCompanyContainer'
+import { withRouter } from 'react-router'
 const url = 'https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=company'
 
 
 
 
-export class HomePage extends React.Component{
+class _HomePage extends React.Component{
 
     constructor() {
         super()
@@ -61,7 +62,7 @@ export class HomePage extends React.Component{
     }
     
     render() {
-        console.log('Home Page', this.state.currentPrices)
+        console.log('Home Page', this.props.history)
         return(
             <div>
                 <Grid>
@@ -70,7 +71,7 @@ export class HomePage extends React.Component{
                             <ScrollBar companyList={this.state.companyList} handleClick={this.handleClick} currentPrices={this.props.currentPrices} />
                         </Grid.Column>
                         <Grid.Column>
-                            <SelectedCompanyContainer {...this.state.selectedCompany} />
+                            <SelectedCompanyContainer {...this.state.selectedCompany} history={this.props.history} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -80,3 +81,5 @@ export class HomePage extends React.Component{
         )
     }
 }
+
+export const HomePage = withRouter(_HomePage)
