@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import logo from './logo.svg';
 import "./App.css";
 import { HomePage } from "./views/HomePage";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { User } from "./unused_components/User";
 import { UserEdit } from "./unused_components/UserEdit";
 import { NavBar } from "./components/NavBar";
@@ -57,7 +57,7 @@ class App extends Component {
   
   
   render() {
-    console.log('app', this.state.currentPrices)
+    console.log('app', this.props.history)
     return (
       <BrowserRouter>
         <div className="App">
@@ -66,9 +66,6 @@ class App extends Component {
             <Route path="/login" component={Login} />
             {/* <Route path="/logout" component={Logout} /> */}
             <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/users/:id/edit" component={UserEdit} />
-            <PrivateRoute path="/users" component={User} />
             <PrivateRoute path="/Portfolio" render={(props) => <Portfolio {...props} currentPrices={this.state.currentPrices} /> } />
             <Route path="/SignUp" component={SignUp} />
           </Switch>

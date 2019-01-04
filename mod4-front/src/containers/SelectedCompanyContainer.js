@@ -48,7 +48,7 @@ export class SelectedCompanyContainer extends React.Component {
             <Image wrapped size="medium" src={currentCompanyLogo} />
             <Modal.Description>
               <Header>Purchase Details</Header>
-              <PurchaseShareForm {...this.props} />
+              <PurchaseShareForm {...this.props} history={this.props.history} />
             </Modal.Description>
           </Modal.Content>
         </Modal>

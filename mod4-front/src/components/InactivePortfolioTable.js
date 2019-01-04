@@ -14,7 +14,7 @@ export class InactivePortfolioTable extends React.Component{
                         <Table.Cell>{transactionInfo.stock}</Table.Cell>
                         <Table.Cell>{transactionInfo.purchased_price}</Table.Cell>
                         <Table.Cell>{transactionInfo.sold_price}</Table.Cell>
-                        <Table.Cell>{transactionInfo.sold_price - transactionInfo.purchased_price}</Table.Cell>
+                        <Table.Cell>{(transactionInfo.sold_price - transactionInfo.purchased_price).toFixed(2)}</Table.Cell>
                     </Table.Row>
                 ))}
             </Table>
