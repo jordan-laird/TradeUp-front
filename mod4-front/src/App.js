@@ -10,11 +10,12 @@ import { Login } from "./components/Login";
 import { Portfolio } from "./components/Portfolio";
 import { SignUp } from "./components/SignUp";
 import { PrivateRoute } from "./components/PrivateRoute";
-// import { Logout } from "./components/Logout";
+
+
 
 class App extends Component {
   state = {
-
+    currentPrices: [],
     currentUser: null
   };
 
@@ -32,24 +33,15 @@ class App extends Component {
           this.setState({ currentUser });
         });
     }
+    this.fetchCurrentPrice()
+    setInterval(this.fetchCurrentPrice, 30000)
   }
 
   setCurrentUser = currentUser => {
     this.setState({ currentUser });
   };
-
-  fetchCurrentPrice = companySymbol => {
-    fetch(`https://api.iextrading.com/1.0/stock/${companySymbol}/chart/1d`)
-      .then(res => res.json())
-      .then(prices =>
-        prices.length
-          ? this.setState({ currentPrice: prices[prices.length - 1] })
-          : null
-      );
-  };
-
-    currentPrices: []
-  }
+    
+  
   fetchCurrentPrice = (companySymbol) => {
     fetch('https://api.iextrading.com/1.0//stock/market/batch?symbols=aapl,fb,tsla,ba,brk.b,dis,ge,hd,nke,sbux,dji,amzn,baba,goog,nflx,adbe,ftnt,grub,irbt,mcd&types=chart&range=1d')
       .then(res => res.json())
@@ -58,30 +50,22 @@ class App extends Component {
           let chart = prices[symbol].chart
           prices[symbol] = chart[chart.length-1]
         }
-        console.log(prices)
         this.setState({currentPrices: prices})
       })
   }
 
-  componentDidMount(){
-    this.fetchCurrentPrice()
-    setInterval(this.fetchCurrentPrice, 30000)
-  }
+  
+  
   render() {
+    console.log('app', this.state.currentPrices)
     return (
       <BrowserRouter>
         <div className="App">
-          <NavBar currentUser={this.state.currentUser} />
+          <NavBar />
           <Switch>
-            <PrivateRoute path="/companies" component={HomePage} />
-            <Route
-              path="/login"
-              render={props => (
-                <Login {...props} setCurrentUser={this.setCurrentUser} />
-              )}
-            />
+            <Route path="/login" component={Login} />
             {/* <Route path="/logout" component={Logout} /> */}
-          <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
+            <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/users/:id/edit" component={UserEdit} />
             <PrivateRoute path="/users" component={User} />

@@ -3,6 +3,43 @@ import { withRouter } from "react-router-dom";
 import { Container, Menu, Icon } from "semantic-ui-react";
 
 class _NavBar extends React.Component {
+  // userAuthenticated = () => {
+  //   if (
+  //     !this.props.currentUser ||
+  //     this.props.currentUser.error === "Please log in"
+  //   ) {
+  //     return (
+  //       <Menu>
+  //         <Container>
+  //           <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
+  //             {" "}
+  //             Login{" "}
+  //           </Menu.Item>{" "}
+  //           <Menu.Item as="a" onClick={() => this.goTo(`/SignUp`)}>
+  //             {" "}
+  //             SignUp{" "}
+  //           </Menu.Item>{" "}
+  //         </Container>
+  //       </Menu>
+  //     );
+  //   } else {
+  //     return (
+  //       <Menu>
+  //         <Container>
+  //           <Menu.Item as="a" onClick={() => this.goTo(`/logout`)}>
+  //             {" "}
+  //             Logout{" "}
+  //           </Menu.Item>{" "}
+  //           <Menu.Item name={this.props.currentUser.firstName}>
+  //             {" "}
+  //             SignUp{" "}
+  //           </Menu.Item>{" "}
+  //         </Container>
+  //       </Menu>
+  //     );
+  //   }
+  // };
+
   render() {
     return (
       <div>
@@ -23,18 +60,14 @@ class _NavBar extends React.Component {
             <Menu.Item as="a" onClick={() => this.goTo(`/portfolio`)}>
               Portfolio{" "}
             </Menu.Item>
-            {!this.props.currentUser && (
-              <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
-                Login
-              </Menu.Item>
-            )}
-            {this.props.currentUser && (
-              <Menu.Item as="a" onClick={() => this.logoutUser()}>
-                Logout
-              </Menu.Item>
-            )}{" "}
+            <Menu.Item as="a" onClick={() => this.goTo(`/login`)}>
+              Login
+            </Menu.Item>{" "}
             <Menu.Item as="a" onClick={() => this.goTo(`/SignUp`)}>
               SignUp
+            </Menu.Item>{" "}
+            <Menu.Item as="a" onClick={() => this.logoutUser()}>
+              Logout
             </Menu.Item>{" "}
           </Container>
         </Menu>

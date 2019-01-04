@@ -3,7 +3,9 @@ import { SBCurrentPrices } from '../unused_components/SBCurrentPrices'
 import { Container, Divider } from 'semantic-ui-react'
 
 export class SBCompanyList extends React.Component{
+    
     render(){
+        const currentPrices = this.props.currentPrices || new Object
         return(
             <Container>
                 {this.props.companyList.map(companyInfo => (
@@ -14,7 +16,7 @@ export class SBCompanyList extends React.Component{
                        <h4>
                        {companyInfo.companyName}
                        </h4>
-                        {this.props.currentPrices[companyInfo.symbol] ? this.props.currentPrices[companyInfo.symbol].close : null }
+                        {currentPrices[companyInfo.symbol] ? currentPrices[companyInfo.symbol].close : null }
                        <Divider />
                    </Container>
 

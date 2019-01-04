@@ -61,6 +61,7 @@ export class HomePage extends React.Component{
     }
     
     render() {
+        console.log('Home Page', this.state.currentPrices)
         return(
             <div>
                 <Grid>
