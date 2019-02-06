@@ -63,7 +63,7 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Login} />
             {/* <Route path="/logout" component={Logout} /> */}
             <PrivateRoute path="/companies" render={(props) => <HomePage {...props} currentPrices={this.state.currentPrices} />} />
             <PrivateRoute path="/Portfolio" render={(props) => <Portfolio {...props} currentPrices={this.state.currentPrices} /> } />
