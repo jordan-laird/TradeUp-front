@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export class Login extends React.Component {
   login = e => {
     e.preventDefault();
-    fetch("http://localhost:3001/api/v1/auth/", {
+    fetch("https://tradeup-api.herokuapp.com/api/v1/auth/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -18,6 +18,7 @@ export class Login extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
+        console.log(result)
         localStorage.setItem("token", result.token);
         localStorage.setItem("userID", result.user.id);
         this.goTo("/companies");

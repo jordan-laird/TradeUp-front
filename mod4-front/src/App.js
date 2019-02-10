@@ -23,7 +23,7 @@ class App extends Component {
     let userID = localStorage.getItem("userID");
     if (userID) {
       // Fetch user
-      fetch(`http://localhost:3001/api/v1/users/${userID}`, {
+      fetch(`https://tradeup-api.herokuapp.com/api/v1/users/${userID}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         }

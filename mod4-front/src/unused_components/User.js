@@ -7,7 +7,7 @@
 //   };
 
 //   componentDidMount() {
-//     fetch("http://localhost:3001/users")
+//     fetch("https://tradeup-api.herokuapp.com/users")
 //       .then(res => res.json())
 //       .then(users => {
 //         this.setState({ users });
@@ -28,7 +28,7 @@
 
 //   destroySelectedUser = () => {
 //     let { user } = this.state;
-//     fetch(`http://localhost:3001/users/${user.id}`, {
+//     fetch(`https://tradeup-api.herokuapp.com/users/${user.id}`, {
 //       method: "DELETE"
 //     });
 //     this.setState(state => {
@@ -39,7 +39,7 @@
 
 //   updateUser = values => {
 //     let { user } = this.state;
-//     fetch(`http://localhost:3001/users/${user.id}`, {
+//     fetch(`https://tradeup-api.herokuapp.com/users/${user.id}`, {
 //       method: "PATCH",
 //       body: JSON.stringify(values)
 //     });
