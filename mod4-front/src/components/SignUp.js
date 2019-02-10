@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Form, Message, Segment } from "semantic-ui-react";
+import { Button, Form, Message, Segment, Grid, Header } from "semantic-ui-react";
 
 export class SignUp extends Component {
   signUpClickHandler = e => {
@@ -28,7 +28,35 @@ export class SignUp extends Component {
     console.log('sign up', this.props.history)
     return (
       <div>
-        <br />
+        <Grid textAlign='center' style={{ height: '100%', marginTop: 100 }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' textAlign='center'>
+              Create an Account
+            </Header>
+            <Form size='large' onSubmit={e => this.signUpClickHandler(e)}>
+              <Segment stacked>
+                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' name="emailInput" />
+                <Form.Input placeholder='First Name' name="firstNameInput" />
+                <Form.Input placeholder='Last Name' name="lastNameInput" />
+                <Form.Input
+                  fluid icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                  name="passwordInput"
+                />
+
+                <Button color="black" fluid size='large' type="submit">
+                  Create Account
+                </Button>
+              </Segment>
+            </Form>
+            <Message>
+              Already have an account? <Link to="/login">Log In</Link>
+            </Message>
+          </Grid.Column>
+        </Grid>
+        {/* <br />
         <br />
         <br />
         <br />
@@ -67,7 +95,7 @@ export class SignUp extends Component {
               Already have an account? <Link to="/login">Log In</Link>
             </Message>
           </Form>
-        </Segment>
+        </Segment> */}
       </div>
     );
   }

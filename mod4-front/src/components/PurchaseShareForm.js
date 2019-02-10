@@ -5,7 +5,7 @@ let userID = localStorage.getItem("userID")
 
 export class PurchaseShareForm extends React.Component{
     addTransaction = (e) => {
-        fetch('http://localhost:3001/api/v1/transactions', {
+        fetch('https://tradeup-api.herokuapp.com/api/v1/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

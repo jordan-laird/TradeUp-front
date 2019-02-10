@@ -51,7 +51,7 @@ class _NavBar extends React.Component {
                 src="/logo.png"
                 style={{ marginRight: "1.5em" }}
               /> */}
-              <Icon name="chart line " size="big" /> Stock City
+              <Icon name="chart line " size="big" /> TradeUp
             </Menu.Item>
             {/* <Menu.Item as="a">Home </Menu.Item> */}
             {localStorage.getItem('token') ? <Menu.Item as="a" onClick={() => this.goTo(`/companies`)}>
@@ -83,7 +83,7 @@ class _NavBar extends React.Component {
   logoutUser = () => {
     console.log("bye");
     localStorage.clear();
-    this.goTo("/login");
+    this.goTo("/");
     // localStorage.removeItem("token");
     // localStorage.removeItem("user");
     // this.props.setCurrentUser(null);

@@ -16,9 +16,10 @@ export class Portfolio extends Component {
 
   fetchTransactions = () => {
     let myTransactions;
-    fetch('http://localhost:3001/api/v1/transactions')
+    fetch('https://tradeup-api.herokuapp.com/api/v1/transactions')
     .then(res => res.json())
     .then((transactions) => {
+      console.log(transactions)
       myTransactions = transactions.filter(transaction => transaction.user_id = userID)
       this.setState({ myTransactionList: myTransactions })
      
@@ -31,7 +32,7 @@ export class Portfolio extends Component {
   sellShare = (transactionInfo) => {
     console.log(transactionInfo)
     let sellPrice = this.props.currentPrices[transactionInfo.stock_symbol].close
-    fetch(`http://localhost:3001/api/v1/transactions/${transactionInfo.id}`, {
+    fetch(`https://tradeup-api.herokuapp.com/api/v1/transactions/${transactionInfo.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
